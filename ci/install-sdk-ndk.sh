@@ -5,7 +5,7 @@ set -euxo pipefail
 # Visual Studio Installer location for the Android SDK
 ANDROID_SDK_ROOT='C:\Program Files (x86)\Android\android-sdk'
 # Visual Studio Installer location for an OpenJDK for Android development
-JAVA_HOME='C:\Program Files\Android\jdk\microsoft_dist_openjdk_1.8.0.25'
+export JAVA_HOME='C:\Program Files\Android\jdk\microsoft_dist_openjdk_1.8.0.25'
 # These registry entries are normally set through the GUI: Tools\Options\Xamarin\Android Settings
 reg add 'HKCU\SOFTWARE\Xamarin\VisualStudio\15.0_e43b966e\Android' -v AndroidSdkDirectory -t REG_SZ -d "$ANDROID_SDK_ROOT" -f
 # Sometimes installed by Microsoft in C:\ProgramData\Microsoft\AndroidNDK64 but not present on CI
