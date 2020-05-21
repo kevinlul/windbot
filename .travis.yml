@@ -7,11 +7,12 @@ env:
   - ARTIFACT="WindBotIgnite-$(date +%Y-%m-%d)-$TRAVIS_COMMIT.zip"
 install:
 - reg add 'HKCU\SOFTWARE\Xamarin\VisualStudio\15.0_e43b966e\Android' -v JavaSdkDirectory -t REG_SZ -d "C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot" -f
+- reg add 'HKCU\SOFTWARE\Xamarin\VisualStudio\15.0_e43b966e\Android' -v AndroidSdkDirectory -t REG_SZ -d "C:\Program Files (x86)\Android\android-sdk" -f
 - choco install nuget.commandline visualstudio2017-workload-xamarinbuildtools visualstudio2017-workload-nativemobile visualstudio2017-workload-netcrossplat AdoptOpenJDK8
 - choco install mono --x86
 script:
-- ls "/c/Program Files (x86)/Android"
-- ls "/c/ProgramData/Microsoft/AndroidNDK64"
+- ls "/c/Program Files (x86)/Android/android-sdk"
+- ls "/c/ProgramData/Microsoft"
 - export PATH="/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin":$PATH
 - nuget restore WindBot.sln
 - msbuild.exe -m -p:Configuration=Release WindBot.sln
