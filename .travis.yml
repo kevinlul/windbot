@@ -13,9 +13,8 @@ install:
 - choco install mono --x86
 - curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name https://dl.google.com/android/repository/android-ndk-r15c-windows-x86_64.zip
 - echo "970bb2496de0eada74674bb1b06d79165f725696 *android-ndk-r15c-windows-x86_64.zip" | sha1sum -c && 7z x android-ndk-r15c-windows-x86_64.zip -o'C:'
+- "/c/Program Files (x86)/Android/android-sdk/tools/bin/sdkmanager.bat" --sdk_root="/c/Program Files (x86)/Android/android-sdk" "platforms;android-24"
 script:
-- ls "/c/Program Files (x86)/Android/android-sdk"
-- ls "/c/ProgramData/Microsoft"
 - export PATH="/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin":$PATH
 - nuget restore WindBot.sln
 - msbuild.exe -m -p:Configuration=Release WindBot.sln
