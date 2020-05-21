@@ -14,7 +14,7 @@ jobs:
   - name: "Desktop exe"
     script: dotnet build WindBot.csproj --configuration=Release
     before_deploy:
-    - cd bin && nv Release WindBot
+    - cd bin && mv Release WindBot
     - 7z a -tzip "$ARTIFACT" WindBot
     - mv $ARTIFACT .. && cd ..
   - name: "Android aar"
