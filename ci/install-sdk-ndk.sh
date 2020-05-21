@@ -15,8 +15,8 @@ reg add 'HKCU\SOFTWARE\Xamarin\VisualStudio\15.0_e43b966e\Android' -v JavaSdkDir
 
 # Manually install Android SDK Platform 24, the most recent version that still works with Embeddinator 0.4.0
 cd "$ANDROID_SDK_ROOT"
-tools/bin/sdkmanager.bat --sdk_root=. "platforms;android-24"
-cd ..
+yes | tools/bin/sdkmanager.bat --sdk_root=. "platforms;android-24"
+cd -
 
 # Manually install Android NDK r15c, the most recent version that still works with Embeddinator 0.4.0
 curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name https://dl.google.com/android/repository/android-ndk-r15c-windows-x86_64.zip

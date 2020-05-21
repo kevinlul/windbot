@@ -7,8 +7,9 @@ env:
   - ARTIFACT="WindBotIgnite-$(date +%Y-%m-%d)-$TRAVIS_COMMIT.zip"
 install:
 - choco install nuget.commandline visualstudio2017-workload-xamarinbuildtools visualstudio2017-workload-nativemobile visualstudio2017-workload-netcrossplat
-- choco install mono --x86
 - ./ci/install-sdk-ndk.sh
+# Unspecified dependency for Embeddinator; 64-bit does not work
+- choco install mono --x86
 script:
 - export PATH="/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin":$PATH
 - nuget restore WindBot.sln
