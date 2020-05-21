@@ -6,10 +6,10 @@ env:
   global:
   - ARTIFACT="WindBotIgnite-$(date +%Y-%m-%d)-$TRAVIS_COMMIT.zip"
 install:
-- choco install visualstudio2017-workload-xamarinbuildtools visualstudio2017-workload-nativemobile
+- choco install visualstudio2017-workload-xamarinbuildtools visualstudio2017-workload-nativemobile visualstudio2017-workload-netcrossplat
 script:
 - export PATH="/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin":$PATH
-- dotnet restore
+- dotnet restore WindBot.sln
 - msbuild.exe -m -p:Configuration=Release WindBot.sln
 before_deploy:
 - cd bin
