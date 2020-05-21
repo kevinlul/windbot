@@ -9,7 +9,8 @@ install:
 - choco install visualstudio2017-workload-xamarinbuildtools visualstudio2017-workload-nativemobile
 script:
 - export PATH="/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin":$PATH
-- msbuild.exe -m -p:Configuration=Release WindBot.sln -v:diag
+- dotnet restore
+- msbuild.exe -m -p:Configuration=Release WindBot.sln
 before_deploy:
 - cd bin
 - mv Release WindBot
