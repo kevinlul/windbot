@@ -8,9 +8,9 @@ env:
 install:
 - choco install nuget.commandline visualstudio2017-workload-xamarinbuildtools visualstudio2017-workload-nativemobile visualstudio2017-workload-netcrossplat AdoptOpenJDK8
 - choco install mono --x86
+- ls 'C:\Program Files\Android\jdk'
 - ./ci/install-sdk-ndk.sh
 script:
-- ls 'C:\Program Files\Android\jdk'
 - export PATH="/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin":$PATH
 - nuget restore WindBot.sln
 - msbuild.exe -m -p:Configuration=Release WindBot.sln
