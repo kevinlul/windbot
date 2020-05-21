@@ -5,9 +5,11 @@ git:
 env:
   global:
   - ARTIFACT="WindBotIgnite-$(date +%Y-%m-%d)-$TRAVIS_COMMIT.zip"
+install:
+- choco install visualstudio2017-workload-xamarinbuildtools
 script:
 - export PATH="/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin":$PATH
-- dotnet build WindBot.csproj --configuration=Release
+- msbuild.exe -m -p:Configuration=Release WindBot.sln
 before_deploy:
 - cd bin
 - mv Release WindBot
