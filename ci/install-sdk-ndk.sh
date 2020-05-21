@@ -4,13 +4,14 @@ set -euxo pipefail
 
 # Visual Studio Installer location for the Android SDK
 ANDROID_SDK_ROOT='C:\Program Files (x86)\Android\android-sdk'
-
+# Visual Studio Installer location for an OpenJDK for Android development
+JAVA_HOME='C:\Program Files\Android\jdk\microsoft_dist_openjdk_1.8.0.25'
 # These registry entries are normally set through the GUI: Tools\Options\Xamarin\Android Settings
 reg add 'HKCU\SOFTWARE\Xamarin\VisualStudio\15.0_e43b966e\Android' -v AndroidSdkDirectory -t REG_SZ -d "$ANDROID_SDK_ROOT" -f
 # Sometimes installed by Microsoft in C:\ProgramData\Microsoft\AndroidNDK64 but not present on CI
 reg add 'HKCU\SOFTWARE\Xamarin\VisualStudio\15.0_e43b966e\Android' -v AndroidNdkDirectory -t REG_SZ -d "C:\android-ndk-r15c" -f
 # Visual Studio Installer provides this JDK for Android development
-reg add 'HKCU\SOFTWARE\Xamarin\VisualStudio\15.0_e43b966e\Android' -v JavaSdkDirectory -t REG_SZ -d "C:\Program Files\Android\jdk\microsoft_dist_openjdk_1.8.0.25" -f
+reg add 'HKCU\SOFTWARE\Xamarin\VisualStudio\15.0_e43b966e\Android' -v JavaSdkDirectory -t REG_SZ -d "$JAVA_HOME" -f
 
 # Manually install Android SDK Platform 24, the most recent version that still works with Embeddinator 0.4.0
 cd "$ANDROID_SDK_ROOT"
