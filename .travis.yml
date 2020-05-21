@@ -5,6 +5,10 @@ git:
 env:
   global:
   - ARTIFACT="WindBotIgnite-$(date +%Y-%m-%d)-$TRAVIS_COMMIT.zip"
+  # Visual Studio Installer location for the Android SDK
+  - ANDROID_SDK_ROOT='C:\Program Files (x86)\Android\android-sdk'
+  # Visual Studio Installer location for an OpenJDK for Android development
+  - JAVA_HOME='C:\Program Files\Android\jdk\microsoft_dist_openjdk_1.8.0.25'
 install:
 - choco install nuget.commandline visualstudio2017-workload-xamarinbuildtools visualstudio2017-workload-nativemobile visualstudio2017-workload-netcrossplat
 - ./ci/install-sdk-ndk.sh
